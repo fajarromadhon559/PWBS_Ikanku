@@ -1,12 +1,17 @@
-
+'use client'
+import Header from "./components/Header"
+import MainContent from "./components/MainContent"
+import SecondHeader from "./components/SecondHeader"
 export default function Home() {
   return (
-    <>
-    <h1 className="bg-sky-400">IKANKU</h1>
-    <br />
-    <a href="/sales">Page Sales</a>
-    <br />
-    <a href="/articles">Page articles</a>
-    </>
+    <div>
+      <Header/>
+      <div className="min-h-screen bg-gray-100 py-28">
+      <SecondHeader/>
+      <main className="p-4">
+        <MainContent/>
+      </main>
+      </div>
+    </div>
   )
 }
