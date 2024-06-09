@@ -1,8 +1,7 @@
-
-const page = () => {
+const Sales = () => {
   return (
-    <div>page</div>
+    <div className="bg-sky-600">page Sales</div>
   )
 }
 
-export default page
+export default Sales
