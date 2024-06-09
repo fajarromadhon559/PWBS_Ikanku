@@ -10,8 +10,8 @@ class ArticleController extends Controller
     //index
     public function index()
     {
-        $showAllData = Article::all();
-        return $showAllData;
+        $articles = Article::all();
+        return response()->json($articles);
     }
 
     //store

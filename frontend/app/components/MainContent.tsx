@@ -28,7 +28,7 @@ const MainContent: React.FC = () => {
       <h3 className="text-xl font-bold mb-4">Artikel Terbaru</h3>
       <div className="bg-gray-100 p-4 rounded-md shadow-md">
         <Link href="/artikel/koordinasi-terkait-sertifikat" className="text-blue-600">
-            Koordinasi Terkait Kepemilikan Sertifikat
+            EXAMP ARTICLE
         </Link>
         <p className="text-sm text-gray-600">05/06/2024 08:58 WIB</p>
         <Link href="/artikel" className="text-blue-500 mt-4 inline-block">

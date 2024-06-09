@@ -11,7 +11,7 @@ const SecondHeader: React.FC = () => {
         <div className="flex-grow border-t border-black"></div>
       </div>
       <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <Link href="/layanan-informasi" className="text-center p-4 bg-gray-500 text-white rounded-lg shadow-lg hover:bg-gray-600 transition-colors">
+        <Link href="/articles" className="text-center p-4 bg-gray-500 text-white rounded-lg shadow-lg hover:bg-gray-600 transition-colors">
             <p className="font-bold">LAYANAN INFORMASI & PENGETAHUAN</p>
             <p>(Habitat, Pangan, Kesehatan)</p>
         </Link>
