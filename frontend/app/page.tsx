@@ -8,7 +8,9 @@ export default function Home() {
     <div>
       <Header/>
       <div className="min-h-screen bg-gray-100 py-28">
+      <div className="px-28">
       <SecondHeader/>
+      </div>
       <main className="p-4">
         <MainContent/>
       </main>
