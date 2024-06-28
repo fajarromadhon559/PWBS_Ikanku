@@ -1,28 +1,31 @@
-'use client'
-import axios from 'axios';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
+"use client";
+import axios from "axios";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
-interface Article {
+interface Fish {
   id: number;
-  title: string;
-  content: string;
-  nama: string;
+  jenis: string;
+  kategori: string;
+  harga: number;
+  jumlah: number;
+  nomor_hp_penjual: string;
 }
 
 const apiUrl = process.env.NEXT_PUBLIC_API_BACKEND;
 
-const Articles = () => {
-  const [articles, setArticles] = useState<Article[]>([]);
+const Fishes = () => {
+  const [fishes, setFishes] = useState<Fish[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`${apiUrl}/api/article`)
-      .then(response => {
-        setArticles(response.data.data); // Ubah setArticles dengan response.data.data
+    axios
+      .get(`${apiUrl}/api/fish`)
+      .then((response) => {
+        setFishes(response.data.data); // Extract the data array from the response
         setLoading(false);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
         setLoading(false);
       });
@@ -30,33 +33,31 @@ const Articles = () => {
 
   const handleDelete = async (id: number) => {
     try {
-      const response = await axios.delete(`${apiUrl}/api/article/${id}`);
-  
-      if (response.data.status === 'success') {
+      const response = await axios.delete(`${apiUrl}/api/fish/${id}`);
+
+      if (response.data.status === "success") {
         // Update state to remove the deleted article
-        setArticles(articles.filter(article => article.id!== id));
-        alert('Are your sure delete this article?');
+        setFishes(fishes.filter((fish) => fish.id !== id));
+        alert("Are your sure delete this submission?");
       } else {
-        console.error('Failed to delete article:', response.data.message);
-        alert('Failed to delete article!');
+        console.error("Failed to delete submission:", response.data.message);
+        alert("Failed to delete submission!");
       }
     } catch (error) {
-      console.error('Error deleting article:', error);
-      alert('Error deleting article!');
+      console.error("Error deleting submission:", error);
+      alert("Error deleting submission!");
     }
   };
 
   return (
     <div className="bg-gray-100 w-screen h-screen flex flex-col">
-      <h1 className='text-center text-white p-4 bg-gray-500'>LAYANAN INFORMASI & ARTIKEL</h1>
-      <div className='mt-8'>
-        {loading ? (
-          <p>Loading...</p>
-        ) : (
-          <p>{articles.length} articles found</p>
-        )}
+      <h1 className="text-center text-white p-4 bg-gray-500">
+        LAYANAN PENJUALAN & DISTRIBUSI
+      </h1>
+      <div className="mt-8">
+        {loading ? <p>Loading...</p> : <p>{fishes.length} fishes found</p>}
         <button className="ml-2 bg-sky-500 px-5 py-3 w-40 rounded-full text-white active:bg-black active:text-sky-300 text-center">
-          <Link href="/addArticle">ADD ARTICLE</Link>
+          <Link href="/AddFish">ADD FISH</Link>
         </button>
 
         <table className="w-full mt-5">
@@ -66,13 +67,19 @@ const Articles = () => {
                 NO
               </th>
               <th className="w-auto border-2 border-slate-300 bg-blue-400 text-white h-10 text-center">
-                TITLE
+                JENIS
               </th>
               <th className="w-auto border-2 border-slate-300 bg-blue-400 text-white h-10 text-center">
-                CONTENT
+                KATEGORI
               </th>
               <th className="w-auto border-2 border-slate-300 bg-blue-400 text-white h-10 text-center">
-                CREATOR
+                HARGA
+              </th>
+              <th className="w-auto border-2 border-slate-300 bg-blue-400 text-white h-10 text-center">
+                JUMLAH
+              </th>
+              <th className="w-auto border-2 border-slate-300 bg-blue-400 text-white h-10 text-center">
+                NOMOR HP PENJUAL
               </th>
               <th className="w-auto border-2 border-slate-300 bg-blue-400 text-white h-10 text-center">
                 ACTION
@@ -80,27 +87,33 @@ const Articles = () => {
             </tr>
           </thead>
           <tbody>
-            {articles.map((article, index) => (
-              <tr key={article.id}>
+            {fishes.map((fish, index) => (
+              <tr key={fish.id}>
                 <td className="border-2 border-slate-300 bg-white text-black h-8 text-center">
                   {index + 1}
                 </td>
                 <td className="border-2 border-slate-300 bg-white text-black h-8 text-center">
-                  {article.title}
+                  {fish.jenis}
                 </td>
                 <td className="border-2 border-slate-300 bg-white text-black h-8 text-center">
-                  {article.content}
+                  {fish.kategori}
                 </td>
                 <td className="border-2 border-slate-300 bg-white text-black h-8 text-center">
-                  {article.nama}
+                  {fish.harga}
+                </td>
+                <td className="border-2 border-slate-300 bg-white text-black h-8 text-center">
+                  {fish.jumlah}
+                </td>
+                <td className="border-2 border-slate-300 bg-white text-black h-8 text-center">
+                  {fish.nomor_hp_penjual}
                 </td>
                 <td className="border-2 border-slate-300 bg-white text-black h-8 text-center">
                   <button className="bg-sky-700 text-white px-3 py-2 rounded-md mr-1">
-                    <Link href={`/editArticle/${article.id}`}>Edit</Link>
+                    <Link href={`/editFish/${fish.id}`}>Edit</Link>
                   </button>
                   <button
                     className="bg-rose-700 text-white px-3 py-2 rounded-md ml-1"
-                    onClick={() => handleDelete(article.id)}
+                    onClick={() => handleDelete(fish.id)}
                   >
                     Delete
                   </button>
@@ -114,4 +127,4 @@ const Articles = () => {
   );
 };
 
-export default Articles;
+export default Fishes;

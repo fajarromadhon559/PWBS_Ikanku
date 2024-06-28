@@ -15,7 +15,7 @@ const SecondHeader: React.FC = () => {
             <p className="font-bold">LAYANAN INFORMASI & PENGETAHUAN</p>
             <p>(Habitat, Pangan, Kesehatan)</p>
         </Link>
-        <Link href="/layanan-penjualan" className="text-center p-4 bg-gray-700 text-white rounded-lg shadow-lg hover:bg-gray-800 transition-colors">
+        <Link href="/fishes" className="text-center p-4 bg-gray-700 text-white rounded-lg shadow-lg hover:bg-gray-800 transition-colors">
             <p className="font-bold">LAYANAN PENJUALAN & DISTRIBUSI</p>
             <p>(Form Penjualan)</p>
         </Link>
