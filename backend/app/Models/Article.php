@@ -11,6 +11,9 @@ class Article extends Model
 
     protected $table = 'articles';
 
+    // guarded
+    protected $guarded = [];
+
        // function create data
     function createData($data)
     {

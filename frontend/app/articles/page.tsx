@@ -48,18 +48,21 @@ const Articles = () => {
 
   return (
     <div className="bg-gray-100 w-screen h-screen flex flex-col">
-      <h1 className='text-center text-white p-4 bg-gray-500'>LAYANAN INFORMASI & ARTIKEL</h1>
-      <div className='mt-8'>
+      <div className='bg-gray-500'>
+      <h1 className='text-center text-white p-4'>LAYANAN INFORMASI & ARTIKEL</h1>
+      </div>
+      <div className='p-4'>
         {loading ? (
           <p>Loading...</p>
         ) : (
-          <p>{articles.length} articles found</p>
+          <p className='p-4'>{articles.length} articles found</p>
         )}
-        <button className="ml-2 bg-sky-500 px-5 py-3 w-40 rounded-full text-white active:bg-black active:text-sky-300 text-center">
+        <button className="ml-2 bg-sky-500 px-5 py-3 w-40 rounded-full text-white active:bg-black active:text-sky-300 text-center shadow-md">
           <Link href="/addArticle">ADD ARTICLE</Link>
         </button>
 
-        <table className="w-full mt-5">
+        <div className='mx-auto p-4 mt-4 bg-white rounded-md shadow-md'>
+        <table className="w-full">
           <thead>
             <tr>
               <th className="w-1/12 border-2 border-slate-300 bg-blue-400 text-white h-10 text-center">
@@ -110,6 +113,7 @@ const Articles = () => {
           </tbody>
         </table>
       </div>
+    </div>
     </div>
   );
 };

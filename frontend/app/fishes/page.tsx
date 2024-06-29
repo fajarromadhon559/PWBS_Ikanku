@@ -54,74 +54,80 @@ const Fishes = () => {
       <h1 className="text-center text-white p-4 bg-gray-500">
         LAYANAN PENJUALAN & DISTRIBUSI
       </h1>
-      <div className="mt-8">
-        {loading ? <p>Loading...</p> : <p>{fishes.length} fishes found</p>}
+      <div className="p-4">
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <p className="p-4">{fishes.length} fishes found</p>
+        )}
         <button className="ml-2 bg-sky-500 px-5 py-3 w-40 rounded-full text-white active:bg-black active:text-sky-300 text-center">
           <Link href="/AddFish">ADD FISH</Link>
         </button>
 
-        <table className="w-full mt-5">
-          <thead>
-            <tr>
-              <th className="w-1/12 border-2 border-slate-300 bg-blue-400 text-white h-10 text-center">
-                NO
-              </th>
-              <th className="w-auto border-2 border-slate-300 bg-blue-400 text-white h-10 text-center">
-                JENIS
-              </th>
-              <th className="w-auto border-2 border-slate-300 bg-blue-400 text-white h-10 text-center">
-                KATEGORI
-              </th>
-              <th className="w-auto border-2 border-slate-300 bg-blue-400 text-white h-10 text-center">
-                HARGA
-              </th>
-              <th className="w-auto border-2 border-slate-300 bg-blue-400 text-white h-10 text-center">
-                JUMLAH
-              </th>
-              <th className="w-auto border-2 border-slate-300 bg-blue-400 text-white h-10 text-center">
-                NOMOR HP PENJUAL
-              </th>
-              <th className="w-auto border-2 border-slate-300 bg-blue-400 text-white h-10 text-center">
-                ACTION
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {fishes.map((fish, index) => (
-              <tr key={fish.id}>
-                <td className="border-2 border-slate-300 bg-white text-black h-8 text-center">
-                  {index + 1}
-                </td>
-                <td className="border-2 border-slate-300 bg-white text-black h-8 text-center">
-                  {fish.jenis}
-                </td>
-                <td className="border-2 border-slate-300 bg-white text-black h-8 text-center">
-                  {fish.kategori}
-                </td>
-                <td className="border-2 border-slate-300 bg-white text-black h-8 text-center">
-                  {fish.harga}
-                </td>
-                <td className="border-2 border-slate-300 bg-white text-black h-8 text-center">
-                  {fish.jumlah}
-                </td>
-                <td className="border-2 border-slate-300 bg-white text-black h-8 text-center">
-                  {fish.nomor_hp_penjual}
-                </td>
-                <td className="border-2 border-slate-300 bg-white text-black h-8 text-center">
-                  <button className="bg-sky-700 text-white px-3 py-2 rounded-md mr-1">
-                    <Link href={`/editFish/${fish.id}`}>Edit</Link>
-                  </button>
-                  <button
-                    className="bg-rose-700 text-white px-3 py-2 rounded-md ml-1"
-                    onClick={() => handleDelete(fish.id)}
-                  >
-                    Delete
-                  </button>
-                </td>
+        <div className="mx-auto p-4 mt-4 bg-white rounded-md shadow-md">
+          <table className="w-full">
+            <thead>
+              <tr>
+                <th className="w-1/12 border-2 border-slate-300 bg-blue-400 text-white h-10 text-center">
+                  NO
+                </th>
+                <th className="w-auto border-2 border-slate-300 bg-blue-400 text-white h-10 text-center">
+                  JENIS
+                </th>
+                <th className="w-auto border-2 border-slate-300 bg-blue-400 text-white h-10 text-center">
+                  KATEGORI
+                </th>
+                <th className="w-auto border-2 border-slate-300 bg-blue-400 text-white h-10 text-center">
+                  HARGA
+                </th>
+                <th className="w-auto border-2 border-slate-300 bg-blue-400 text-white h-10 text-center">
+                  JUMLAH
+                </th>
+                <th className="w-auto border-2 border-slate-300 bg-blue-400 text-white h-10 text-center">
+                  NOMOR HP PENJUAL
+                </th>
+                <th className="w-auto border-2 border-slate-300 bg-blue-400 text-white h-10 text-center">
+                  ACTION
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {fishes.map((fish, index) => (
+                <tr key={fish.id}>
+                  <td className="border-2 border-slate-300 bg-white text-black h-8 text-center">
+                    {index + 1}
+                  </td>
+                  <td className="border-2 border-slate-300 bg-white text-black h-8 text-center">
+                    {fish.jenis}
+                  </td>
+                  <td className="border-2 border-slate-300 bg-white text-black h-8 text-center">
+                    {fish.kategori}
+                  </td>
+                  <td className="border-2 border-slate-300 bg-white text-black h-8 text-center">
+                    {fish.harga}
+                  </td>
+                  <td className="border-2 border-slate-300 bg-white text-black h-8 text-center">
+                    {fish.jumlah}
+                  </td>
+                  <td className="border-2 border-slate-300 bg-white text-black h-8 text-center">
+                    {fish.nomor_hp_penjual}
+                  </td>
+                  <td className="border-2 border-slate-300 bg-white text-black h-8 text-center">
+                    <button className="bg-sky-700 text-white px-3 py-2 rounded-md mr-1">
+                      <Link href={`/editFish/${fish.id}`}>Edit</Link>
+                    </button>
+                    <button
+                      className="bg-rose-700 text-white px-3 py-2 rounded-md ml-1"
+                      onClick={() => handleDelete(fish.id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
